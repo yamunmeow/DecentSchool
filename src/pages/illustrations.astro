@@ -1,0 +1,152 @@
+---
+// src/pages/illustrations.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const illustrations = [
+  {
+    title: "Decentralized Network",
+    artist: "ArtisticDev",
+    description: "Abstract representation of peer-to-peer connections",
+    color: "linear-gradient(135deg, #ff6b6b, #4d9eff)",
+    emoji: "🌐"
+  },
+  {
+    title: "Learning Rainbow",
+    artist: "ColorCoder",
+    description: "The spectrum of knowledge in decentralized education",
+    color: "linear-gradient(135deg, #ffb347, #ff85b3)",
+    emoji: "🌈"
+  },
+  {
+    title: "Code Garden",
+    artist: "PixelTeacher",
+    description: "Where ideas grow and flourish",
+    color: "linear-gradient(135deg, #6bcf7f, #ffd93b)",
+    emoji: "🌱"
+  },
+  {
+    title: "Future Classroom",
+    artist: "VisionaryEdu",
+    description: "Reimagining learning spaces in the digital age",
+    color: "linear-gradient(135deg, #9d7eff, #ff6b6b)",
+    emoji: "🏫"
+  }
+];
+---
+
+<Layout title="Illustrations - DecentralSchool">
+  <Navbar />
+  
+  <main class="container">
+    <header class="page-header">
+      <h1 class="rainbow-text">🎨 Creative Illustrations</h1>
+      <p class="header-description">Visual art from our creative community</p>
+    </header>
+
+    <div class="illustration-grid">
+      {illustrations.map(ill => (
+        <div class="illustration-card card">
+          <div class="illustration-preview" style={`background: ${ill.color}`}>
+            <span class="preview-emoji floating">{ill.emoji}</span>
+          </div>
+          <div class="illustration-content">
+            <h3 class="illustration-title">{ill.title}</h3>
+            <p class="illustration-artist">by {ill.artist}</p>
+            <p class="illustration-description">{ill.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <section class="submit-illustration">
+      <div class="card">
+        <h2>🎨 Share your art</h2>
+        <p>Submit your illustrations to inspire the community</p>
+        <a href="https://github.com/yourusername/DecentralSchool" class="rainbow-button">Submit Artwork</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>🎨 Art inspires learning</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .illustration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+  }
+
+  .illustration-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .illustration-preview {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preview-emoji {
+    font-size: 5rem;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+  }
+
+  .illustration-content {
+    padding: 20px;
+  }
+
+  .illustration-title {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+  }
+
+  .illustration-artist {
+    color: var(--rainbow-5);
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  .illustration-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .submit-illustration {
+    margin: 60px 0;
+  }
+
+  .submit-illustration .card {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .footer {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,163 @@
+---
+// src/pages/memes.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+
+const memes = [
+  {
+    title: "When the code finally works",
+    image: "https://placekitten.com/400/400?1",
+    alt: "Cat celebrating",
+    author: "@coder_cat",
+    likes: 420
+  },
+  {
+    title: "Learning blockchain be like",
+    image: "https://placekitten.com/401/400?2",
+    alt: "Confused cat",
+    author: "@web3_fun",
+    likes: 380
+  },
+  {
+    title: "Me trying to explain decentralization",
+    image: "https://placekitten.com/402/400?3",
+    alt: "Excited cat",
+    author: "@degen_teacher",
+    likes: 520
+  },
+  {
+    title: "When you deploy to mainnet",
+    image: "https://placekitten.com/403/400?4",
+    alt: "Nervous cat",
+    author: "@solidity_dev",
+    likes: 690
+  }
+];
+---
+
+<Layout title="Memes - DecentralSchool">
+  <Navbar />
+  
+  <main class="container">
+    <header class="page-header">
+      <h1 class="rainbow-text">😂 Coding Memes</h1>
+      <p class="header-description">The funniest memes from the decentralized education community</p>
+    </header>
+
+    <div class="meme-grid">
+      {memes.map(meme => (
+        <div class="meme-card card">
+          <div class="meme-image-container">
+            <img src={meme.image} alt={meme.alt} class="meme-image" />
+          </div>
+          <div class="meme-content">
+            <h3 class="meme-title">{meme.title}</h3>
+            <div class="meme-footer">
+              <span class="meme-author">👤 {meme.author}</span>
+              <span class="meme-likes">❤️ {meme.likes}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <section class="submit-meme">
+      <div class="card">
+        <h2>🎨 Got a funny meme?</h2>
+        <p>Share it with the community! Add your memes to our GitHub repository.</p>
+        <a href="https://github.com/yourusername/DecentralSchool" class="rainbow-button">Submit Meme</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>😂 Laughter is the best education</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .header-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+  }
+
+  .meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+  }
+
+  .meme-card {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .meme-image-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .meme-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .meme-card:hover .meme-image {
+    transform: scale(1.05);
+  }
+
+  .meme-content {
+    padding: 20px;
+  }
+
+  .meme-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  .meme-footer {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .meme-author, .meme-likes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .submit-meme {
+    margin: 60px 0;
+  }
+
+  .submit-meme .card {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .footer {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+  }
+</style>

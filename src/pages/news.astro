@@ -1,0 +1,154 @@
+---
+// src/pages/news.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import RainbowCard from '../components/RainbowCard.astro';
+
+const news = [
+  {
+    title: "New Blockchain Education Initiative Launches",
+    description: "Government partners with DecentralSchool to teach Web3 in schools",
+    link: "/news/blockchain-initiative",
+    emoji: "🏛️",
+    date: "March 15, 2024"
+  },
+  {
+    title: "Decentralized Learning Platform Hits 1M Users",
+    description: "Community-driven education reaches new milestone",
+    link: "/news/million-users",
+    emoji: "🎉",
+    date: "March 14, 2024"
+  },
+  {
+    title: "New Smart Contract Curriculum Released",
+    description: "Free course on Solidity development now available",
+    link: "/news/solidity-course",
+    emoji: "📱",
+    date: "March 13, 2024"
+  },
+  {
+    title: "Education DAO Votes on New Features",
+    description: "Community governance in action",
+    link: "/news/dao-vote",
+    emoji: "🗳️",
+    date: "March 12, 2024"
+  }
+];
+---
+
+<Layout title="News - DecentralSchool">
+  <Navbar />
+  
+  <main class="container">
+    <header class="page-header">
+      <h1 class="rainbow-text">📰 Education News</h1>
+      <p class="header-description">Latest updates in decentralized education and innovation</p>
+    </header>
+
+    <div class="featured-news card">
+      <span class="breaking-badge">🔴 BREAKING</span>
+      <h2>Major Education Reform Includes Blockchain Curriculum</h2>
+      <p>Schools nationwide to implement Web3 and decentralized systems education starting next fall.</p>
+      <a href="/news/breaking-reform" class="read-more">Read full story →</a>
+    </div>
+
+    <div class="grid">
+      {news.map(item => (
+        <RainbowCard
+          title={item.title}
+          description={item.description}
+          link={item.link}
+          emoji={item.emoji}
+          date={item.date}
+        />
+      ))}
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>📰 Stay informed, stay decentralized</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .header-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+  }
+
+  .featured-news {
+    margin: 40px 0;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-news::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, 
+      var(--rainbow-1), 
+      var(--rainbow-2), 
+      var(--rainbow-3));
+  }
+
+  .breaking-badge {
+    background: linear-gradient(90deg, 
+      var(--rainbow-1), 
+      var(--rainbow-2));
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+
+  .featured-news h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+  }
+
+  .featured-news p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+  }
+
+  .featured-news .read-more {
+    color: var(--rainbow-4);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .footer {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+  }
+</style>

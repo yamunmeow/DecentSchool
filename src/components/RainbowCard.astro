@@ -1,0 +1,76 @@
+---
+// src/components/RainbowCard.astro
+export interface Props {
+  title: string;
+  description: string;
+  link: string;
+  emoji?: string;
+  date?: string;
+}
+
+const { title, description, link, emoji = '📚', date } = Astro.props;
+---
+
+<a href={link} class="card-link">
+  <div class="card rainbow-card">
+    <div class="card-emoji floating">{emoji}</div>
+    <h3 class="card-title">{title}</h3>
+    <p class="card-description">{description}</p>
+    {date && <span class="card-date">{date}</span>}
+    <span class="read-more">Read more →</span>
+  </div>
+</a>
+
+<style>
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .rainbow-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-emoji {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  .card-description {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    flex-grow: 1;
+  }
+
+  .card-date {
+    font-size: 0.9rem;
+    color: var(--rainbow-5);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .read-more {
+    color: var(--rainbow-4);
+    font-weight: 600;
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+
+  .rainbow-card:hover .read-more {
+    transform: translateX(5px);
+    background: linear-gradient(90deg, 
+      var(--rainbow-1), 
+      var(--rainbow-2), 
+      var(--rainbow-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

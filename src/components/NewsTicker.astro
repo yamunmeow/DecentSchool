@@ -1,0 +1,60 @@
+---
+// src/components/NewsTicker.astro
+export interface Props {
+  news: Array<{ text: string; link: string }>;
+}
+
+const { news } = Astro.props;
+---
+
+<div class="news-ticker">
+  <div class="news-content">
+    {news.map(item => (
+      <a href={item.link} class="news-item">
+        🔴 {item.text} &nbsp;&nbsp;&nbsp;
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .news-ticker {
+    background: linear-gradient(90deg, 
+      var(--rainbow-1), 
+      var(--rainbow-2), 
+      var(--rainbow-3),
+      var(--rainbow-4),
+      var(--rainbow-5),
+      var(--rainbow-6),
+      var(--rainbow-7));
+    padding: 15px 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50px;
+    margin: 20px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .news-content {
+    white-space: nowrap;
+    animation: ticker 40s linear infinite;
+  }
+
+  .news-item {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 30px;
+    transition: opacity 0.3s ease;
+  }
+
+  .news-item:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+</style>

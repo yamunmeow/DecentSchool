@@ -1,0 +1,137 @@
+---
+// src/pages/blog.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import RainbowCard from '../components/RainbowCard.astro';
+
+const posts = [
+  {
+    title: "Why Decentralized Education Matters",
+    description: "Exploring the benefits of community-driven learning",
+    link: "/blog/decentralized-matters",
+    emoji: "🤔",
+    date: "March 10, 2024"
+  },
+  {
+    title: "My Journey Learning Solidity",
+    description: "A beginner's perspective on smart contract development",
+    link: "/blog/solidity-journey",
+    emoji: "🚀",
+    date: "March 8, 2024"
+  },
+  {
+    title: "The Future of Digital Credentials",
+    description: "How blockchain is revolutionizing certificates and degrees",
+    link: "/blog/digital-credentials",
+    emoji: "🎓",
+    date: "March 5, 2024"
+  },
+  {
+    title: "Building a Learning DAO",
+    description: "Lessons from starting a decentralized education community",
+    link: "/blog/learning-dao",
+    emoji: "🏛️",
+    date: "March 1, 2024"
+  }
+];
+---
+
+<Layout title="Blog - DecentralSchool">
+  <Navbar />
+  
+  <main class="container">
+    <header class="page-header">
+      <h1 class="rainbow-text">📱 Community Blog</h1>
+      <p class="header-description">Thoughts, stories, and ideas from our community</p>
+    </header>
+
+    <div class="blog-intro card">
+      <h2>✍️ Write for Us</h2>
+      <p>Have insights about decentralized education? Share your perspective with the community!</p>
+      <a href="https://github.com/yourusername/DecentralSchool" class="rainbow-button">Submit a Post</a>
+    </div>
+
+    <div class="grid">
+      {posts.map(post => (
+        <RainbowCard
+          title={post.title}
+          description={post.description}
+          link={post.link}
+          emoji={post.emoji}
+          date={post.date}
+        />
+      ))}
+    </div>
+
+    <div class="pagination">
+      <a href="#" class="rainbow-button">← Previous</a>
+      <span class="page-indicator">Page 1 of 5</span>
+      <a href="#" class="rainbow-button">Next →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>📱 Share your story</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .header-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+  }
+
+  .blog-intro {
+    margin: 40px 0;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .blog-intro h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, 
+      var(--rainbow-1), 
+      var(--rainbow-2), 
+      var(--rainbow-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .blog-intro p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 50px 0;
+  }
+
+  .page-indicator {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+
+  .footer {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+  }
+</style>

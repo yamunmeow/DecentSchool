@@ -1,0 +1,88 @@
+---
+// src/components/Navbar.astro
+---
+
+<nav class="navbar">
+  <div class="container nav-container">
+    <a href="/" class="logo rainbow-text floating">🏳️‍🌈 DecentralSchool</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/texts">Texts</a></li>
+      <li><a href="/memes">Memes</a></li>
+      <li><a href="/illustrations">Illustrations</a></li>
+      <li><a href="/code-lab">Code Lab</a></li>
+      <li><a href="/news">News</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <button class="rainbow-button mobile-menu">☰</button>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      var(--rainbow-1), 
+      var(--rainbow-2), 
+      var(--rainbow-3));
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
+</style>

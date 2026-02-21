@@ -1,0 +1,183 @@
+---
+// src/pages/code-lab.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import RainbowCard from '../components/RainbowCard.astro';
+
+const codeLabs = [
+  {
+    title: "Smart Contract Basics",
+    description: "Write your first simple smart contract in Solidity",
+    link: "/code-lab/smart-contract",
+    emoji: "📝",
+    level: "Beginner"
+  },
+  {
+    title: "Build a DApp",
+    description: "Create a decentralized application from scratch",
+    link: "/code-lab/dapp",
+    emoji: "🔨",
+    level: "Intermediate"
+  },
+  {
+    title: "Web3.js Integration",
+    description: "Connect your website to the blockchain",
+    link: "/code-lab/web3js",
+    emoji: "🌐",
+    level: "Intermediate"
+  },
+  {
+    title: "DAO Governance",
+    description: "Implement voting mechanisms in your DAO",
+    link: "/code-lab/dao",
+    emoji: "🗳️",
+    level: "Advanced"
+  }
+];
+---
+
+<Layout title="Code Lab - DecentralSchool">
+  <Navbar />
+  
+  <main class="container">
+    <header class="page-header">
+      <h1 class="rainbow-text">💻 Code Lab</h1>
+      <p class="header-description">Learn by coding - contribute your own examples!</p>
+    </header>
+
+    <div class="github-section card">
+      <h2>📦 Clone & Contribute</h2>
+      <p>Fork our repository and add your own code examples:</p>
+      <div class="code-block">
+        <code>git clone https://github.com/yourusername/DecentralSchool.git</code>
+        <button class="copy-btn" onclick="navigator.clipboard.writeText('git clone https://github.com/yourusername/DecentralSchool.git')">📋</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      {codeLabs.map(lab => (
+        <RainbowCard
+          title={lab.title}
+          description={`${lab.description} (${lab.level})`}
+          link={lab.link}
+          emoji={lab.emoji}
+        />
+      ))}
+    </div>
+
+    <section class="add-code">
+      <div class="card">
+        <h2>🛠️ Want to add your own code?</h2>
+        <p>Create a new .astro file in the pages directory with your example!</p>
+        <div class="example-structure">
+          <h3>Example structure:</h3>
+          <pre>
+src/
+  pages/
+    code-lab/
+      your-example.astro
+          </pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>💻 Code together, learn together</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .header-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+  }
+
+  .github-section {
+    margin: 40px 0;
+    padding: 30px;
+  }
+
+  .github-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, 
+      var(--rainbow-1), 
+      var(--rainbow-2), 
+      var(--rainbow-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .code-block {
+    background: #2d2d2d;
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .code-block code {
+    color: #fff;
+    font-family: monospace;
+  }
+
+  .copy-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .add-code {
+    margin: 60px 0;
+  }
+
+  .add-code .card {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .example-structure {
+    margin-top: 25px;
+    text-align: left;
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .example-structure pre {
+    background: rgba(0,0,0,0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-family: monospace;
+  }
+
+  .footer {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+  }
+</style>

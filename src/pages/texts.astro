@@ -1,0 +1,123 @@
+---
+// src/pages/texts.astro
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import RainbowCard from '../components/RainbowCard.astro';
+
+const texts = [
+  {
+    title: "Introduction to Decentralized Education",
+    description: "Learn how blockchain technology is revolutionizing the way we learn and teach",
+    link: "/texts/decentralized-edu",
+    emoji: "📚",
+    date: "March 15, 2024"
+  },
+  {
+    title: "The Future of Peer-to-Peer Learning",
+    description: "Exploring collaborative learning models in the digital age",
+    link: "/texts/p2p-learning",
+    emoji: "🤝",
+    date: "March 14, 2024"
+  },
+  {
+    title: "Smart Contracts in Education",
+    description: "How automated agreements can transform credentialing and certifications",
+    link: "/texts/smart-contracts",
+    emoji: "📜",
+    date: "March 13, 2024"
+  },
+  {
+    title: "DAO Governance for Schools",
+    description: "Community-driven decision making in educational institutions",
+    link: "/texts/dao-schools",
+    emoji: "🏛️",
+    date: "March 12, 2024"
+  }
+];
+---
+
+<Layout title="Texts - DecentralSchool">
+  <Navbar />
+  
+  <main class="container">
+    <header class="page-header">
+      <h1 class="rainbow-text">📝 Educational Texts</h1>
+      <p class="header-description">Deep dives into decentralized education, technology, and innovation</p>
+    </header>
+
+    <div class="grid">
+      {texts.map(text => (
+        <RainbowCard
+          title={text.title}
+          description={text.description}
+          link={text.link}
+          emoji={text.emoji}
+          date={text.date}
+        />
+      ))}
+    </div>
+
+    <section class="submit-section">
+      <div class="card">
+        <h2>✍️ Want to contribute a text?</h2>
+        <p>Share your knowledge with the community! Submit your articles, essays, or educational content.</p>
+        <a href="https://github.com/yourusername/DecentralSchool" class="rainbow-button">Submit on GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>🌈 Keep learning, keep growing</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .page-header {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .header-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+  }
+
+  .submit-section {
+    margin: 60px 0;
+  }
+
+  .submit-section .card {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .submit-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, 
+      var(--rainbow-1), 
+      var(--rainbow-2), 
+      var(--rainbow-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .submit-section p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+  }
+
+  .footer {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+  }
+</style>
