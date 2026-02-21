@@ -10,9 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.15",
     "astro": "^5.0.0"
   },
   "engines": {
-  "node": ">=20"
+    "node": ">=20"
   }
 }
